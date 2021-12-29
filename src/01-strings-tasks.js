@@ -156,8 +156,8 @@ function unbracketTag(str) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  return str.split('').map((char) => char.toUpperCase()).join('');
 }
 
 /**
@@ -175,8 +175,8 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -223,8 +223,25 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  let calculated = '';
+  for (let i = 0; i < str.length; i += 1) {
+    const initial = alphabet.indexOf(str[i].toLowerCase());
+    if (initial >= 0) {
+      const calcIndex = initial + 13 >= alphabet.length
+        ? (initial + 13) % alphabet.length
+        : initial + 13;
+      if (str[i] === str[i].toUpperCase()) {
+        calculated += alphabet[calcIndex].toUpperCase();
+      } else {
+        calculated += alphabet[calcIndex];
+      }
+    } else {
+      calculated += str[i];
+    }
+  }
+  return calculated;
 }
 
 /**
