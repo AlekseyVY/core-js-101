@@ -258,8 +258,16 @@ function getMovingSum(arr) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  if (arr.length <= 1) return [];
+  let num = 1;
+  return arr.reduce((acc, val, idx) => {
+    if (num === idx) {
+      num += 2;
+      acc.push(val);
+    }
+    return acc;
+  }, []);
 }
 
 
