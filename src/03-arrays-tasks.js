@@ -562,8 +562,13 @@ function getIntervalArray(start, end) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  const data = {};
+  arr.map((ele) => {
+    data[ele] = true;
+    return ele;
+  });
+  return Object.keys(data);
 }
 
 /**
