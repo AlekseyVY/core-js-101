@@ -333,7 +333,11 @@ function get3TopItems(arr) {
 function getPositivesCount(arr) {
   if (arr.length === 0) return 0;
   return arr.reduce((acc, val) => {
-    if (typeof val === 'number' && val > 0) acc += 1;
+    if (typeof val === 'number' && val > 0) {
+      let cur = acc;
+      cur += 1;
+      return cur;
+    }
     return acc;
   }, 0);
 }
@@ -399,7 +403,11 @@ function getItemsSum(arr) {
  */
 function getFalsyValuesCount(arr) {
   return arr.reduce((acc, val) => {
-    if (Boolean(val) === false) acc += 1;
+    if (Boolean(val) === false) {
+      let cur = acc;
+      cur += 1;
+      return cur;
+    }
     return acc;
   }, 0);
 }
@@ -420,7 +428,11 @@ function getFalsyValuesCount(arr) {
  */
 function findAllOccurrences(arr, item) {
   return arr.reduce((acc, val) => {
-    if (val === item) acc += 1;
+    if (val === item) {
+      let cur = acc;
+      cur += 1;
+      return cur;
+    }
     return acc;
   }, 0);
 }
