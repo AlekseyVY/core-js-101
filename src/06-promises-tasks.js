@@ -30,9 +30,9 @@
  */
 function willYouMarryMe(isPositiveAnswer) {
   return new Promise((res, rej) => {
-    if (arguments.length === 0) return rej(new Error('Wrong parameter is passed! Ask her again.'));
-    if (isPositiveAnswer) return res('Hooray!!! She said "Yes"!');
-    return res('Oh no, she said "No".');
+    if (arguments.length === 0) rej(new Error('Wrong parameter is passed! Ask her again.'));
+    if (isPositiveAnswer) res('Hooray!!! She said "Yes"!');
+    res('Oh no, she said "No".');
   });
 }
 
