@@ -477,9 +477,31 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const players = ['X', '0'];
+  let winner;
+  players.forEach((player) => {
+    position.forEach((arr) => {
+      if (arr.every((ele) => ele === player) && arr.length === 3) winner = player;
+    });
+  });
+  if (!winner) {
+    for (let x = 0; x < position.length; x += 1) {
+      const ele = position[0][x];
+      if (position[0][x] === ele && ele === position[1][x] && ele === position[2][x]) winner = ele;
+    }
+  }
+  if (!winner) {
+    players.forEach((ele) => {
+      if (position[0][0] === ele && position[1][1] === ele && position[2][2] === ele) winner = ele;
+      if (position[0][2] === ele && position[1][1] === ele && position[2][0] === ele) winner = ele;
+    });
+  }
+  return winner;
 }
+
+
+// check row and cols for three X's or O's, then check two diagonals. return winner, or undefined.
 
 
 module.exports = {
